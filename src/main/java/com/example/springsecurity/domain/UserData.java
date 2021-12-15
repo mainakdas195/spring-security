@@ -12,6 +12,8 @@ public class UserData {
 	private String name;
 	private String password;
 	private String role;
+	private String geo;
+	
 	/*
 	 * @ManyToOne
 	 * 
@@ -55,4 +57,11 @@ public class UserData {
 		this.name = name;
 	}
 
+	public String getGeo() {
+		return geo;
+	}
+
+	public void setGeo(String geo) {
+		this.geo = geo;
+	}
 }
