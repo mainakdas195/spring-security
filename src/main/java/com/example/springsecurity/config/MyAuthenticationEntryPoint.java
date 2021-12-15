@@ -34,7 +34,7 @@ public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		response.setContentType("application/json");
 		response.getWriter()
-				.println(jsonObject.put("exception", "HTTP Status 401 - " + accessDeniedException.getMessage()));
+				.println(jsonObject.put("exception", "HTTP Status 401 Failed Auth- " + accessDeniedException.getMessage()));
 	} catch (JSONException e) {
 		e.printStackTrace();
 	}
