@@ -34,9 +34,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private Collection<GrantedAuthority> getGrantedAuthority(UserData user) {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		if (user.getRole().equalsIgnoreCase("admin")) {
-			authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			
+			if ("US".equalsIgnoreCase(user.getGeo())) {
+				authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN_US"));
+			} else {
+				authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN_UK"));
+			}
 		} else {
-			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+			if ("US".equalsIgnoreCase(user.getGeo())) {
+				authorities.add(new SimpleGrantedAuthority("ROLE_USER_US"));
+			} else {
+				authorities.add(new SimpleGrantedAuthority("ROLE_USER_UK"));
+			}
 		}
 		
 		return authorities;
